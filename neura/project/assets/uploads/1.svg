@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0C1A2E"/>
+      <stop offset="100%" stop-color="#15263F"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <rect x="40" y="40" width="720" height="48" rx="8" fill="rgba(34,211,160,0.15)" stroke="rgba(34,211,160,0.35)"/>
+  <text x="400" y="270" text-anchor="middle" fill="#94A3BE" font-family="system-ui,sans-serif" font-size="22">Ecommerce · vista previa</text>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#F4F7FB"/>
+  <rect x="120" y="80" width="560" height="340" rx="16" fill="#fff" stroke="#DFE6F1"/>
+  <rect x="160" y="140" width="480" height="36" rx="6" fill="#E8EEF6"/>
+  <rect x="160" y="200" width="360" height="24" rx="4" fill="#E8EEF6"/>
+  <text x="400" y="430" text-anchor="middle" fill="#4A5670" font-family="system-ui,sans-serif" font-size="22">Landing · vista previa</text>
+</svg>

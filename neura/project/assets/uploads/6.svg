@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500">
+  <rect width="800" height="500" fill="#07101F"/>
+  <path d="M0 380 Q200 280 400 320 T800 300 V500 H0Z" fill="rgba(47,123,255,0.15)"/>
+  <rect x="200" y="120" width="400" height="220" rx="14" fill="#0C1A2E" stroke="rgba(34,211,160,0.35)"/>
+  <text x="400" y="400" text-anchor="middle" fill="#94A3BE" font-family="system-ui,sans-serif" font-size="22">Automatización · vista previa</text>
+</svg>
