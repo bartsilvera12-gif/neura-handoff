@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ERP para empresas en Paraguay — Ventas, stock y compras bajo control | NEURA</title>
+<meta name="description" content="Implementamos un ERP adaptado a tu empresa en Paraguay: ventas, inventario, compras, clientes, reportes y facturación. Desde Gs. 1.500.000. Pedí tu demo por WhatsApp."/>
+<meta name="keywords" content="ERP Paraguay, sistema de ventas, control de stock, sistema de facturación, software para empresas Paraguay, ERP a medida"/>
+<meta name="robots" content="index,follow"/>
+<link rel="canonical" href="https://www.neura.com.py/erp-para-empresas"/>
+<meta property="og:title" content="ERP para controlar ventas, stock y compras en Paraguay"/>
+<meta property="og:description" content="Sistema adaptado a tu empresa para ordenar la operación y tomar mejores decisiones. Implementación desde Gs. 1.500.000."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.neura.com.py/erp-para-empresas"/>
+<meta name="theme-color" content="#07101F"/>
+<link rel="icon" type="image/x-icon" href="/favicon_neura.ico"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap"/>
+
+<!-- =========================================================
+     GOOGLE TAG MANAGER  (reemplazá GTM-XXXXXXX por tu ID)
+     ========================================================= -->
+<!--
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+-->
+
+<!-- =========================================================
+     GOOGLE ADS — gtag.js  (reemplazá AW-XXXXXXXXX y los labels)
+     ========================================================= -->
+<!--
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-XXXXXXXXX');
+</script>
+-->
+
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  :root{
+    --bg:#07101F;
+    --bg-2:#0B1729;
+    --panel:#0F1E33;
+    --line:rgba(255,255,255,.08);
+    --text:#E8EEF7;
+    --muted:#9AA8BD;
+    --green:#22D3A0;
+    --green-dark:#0c8a64;
+    --blue:#2F7BFF;
+    --glow:rgba(34,211,160,.35);
+  }
+  body{
+    background:radial-gradient(1200px 600px at 80% -10%, rgba(47,123,255,.18), transparent 60%),
+               radial-gradient(900px 500px at -10% 20%, rgba(34,211,160,.18), transparent 60%),
+               var(--bg);
+    color:var(--text);
+    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Sora','Inter',sans-serif;letter-spacing:-0.01em;margin:0 0 .5em}
+  h1{font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.1;font-weight:800}
+  h2{font-size:clamp(1.6rem,3.2vw,2.4rem);line-height:1.15;font-weight:700}
+  h3{font-size:1.15rem;font-weight:600}
+  p{margin:0 0 1em;color:var(--muted)}
+  .container{max-width:1140px;margin:0 auto;padding:0 24px}
+  a{color:inherit}
+
+  /* NAV */
+  .nav{position:sticky;top:0;z-index:50;backdrop-filter:saturate(140%) blur(10px);
+       background:rgba(7,16,31,.7);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Sora';font-weight:700;font-size:1.1rem;text-decoration:none;color:#fff}
+  .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 14px var(--glow)}
+  .nav-cta{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#06241a;
+           font-weight:600;padding:10px 16px;border-radius:10px;text-decoration:none;font-size:.9rem;
+           transition:transform .15s,box-shadow .15s}
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 10px 30px var(--glow)}
+
+  /* HERO */
+  .hero{padding:80px 0 60px;position:relative;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+  .badge{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid var(--line);
+         border-radius:999px;background:rgba(255,255,255,.03);font-size:.82rem;color:var(--muted);margin-bottom:18px}
+  .badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--glow)}
+  .hero p.lead{font-size:1.12rem;color:#C9D3E2;max-width:560px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:12px;
+       font-weight:600;font-size:1rem;text-decoration:none;border:1px solid transparent;cursor:pointer;
+       transition:transform .15s,box-shadow .15s,background .15s}
+  .btn-primary{background:var(--green);color:#06241a;box-shadow:0 10px 30px var(--glow)}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 40px var(--glow)}
+  .btn-ghost{background:transparent;color:#fff;border-color:var(--line)}
+  .btn-ghost:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.18)}
+  .btn svg{width:18px;height:18px}
+
+  .hero-card{
+    background:linear-gradient(180deg,rgba(47,123,255,.10),rgba(34,211,160,.06));
+    border:1px solid var(--line);border-radius:18px;padding:22px;
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
+  }
+  .hero-card h3{margin:0 0 14px;color:#fff}
+  .kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .kpi{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .kpi b{display:block;font-family:'Sora';font-size:1.4rem;color:#fff}
+  .kpi span{font-size:.78rem;color:var(--muted)}
+  .mini-list{margin-top:14px;display:grid;gap:10px}
+  .mini-list .row{display:flex;align-items:center;justify-content:space-between;
+                  padding:10px 12px;background:rgba(255,255,255,.02);border:1px solid var(--line);border-radius:10px;font-size:.92rem}
+  .pill{padding:3px 9px;border-radius:999px;background:rgba(34,211,160,.14);color:var(--green);font-size:.75rem;font-weight:600}
+
+  /* SECTIONS */
+  section{padding:72px 0}
+  section.alt{background:linear-gradient(180deg,transparent,rgba(255,255,255,.02))}
+  .eyebrow{color:var(--green);font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;margin-bottom:10px;display:inline-block}
+  .section-head{max-width:760px;margin:0 auto 40px;text-align:center}
+  .section-head p{font-size:1.05rem}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px;
+        transition:transform .2s,border-color .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-3px);border-color:rgba(34,211,160,.35);box-shadow:0 18px 50px rgba(0,0,0,.35)}
+  .card .icon{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;
+              background:rgba(34,211,160,.12);color:var(--green);margin-bottom:12px}
+  .card .icon svg{width:22px;height:22px}
+  .card p{margin:0;font-size:.95rem}
+
+  .problem-list{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .problem-item{display:flex;gap:14px;align-items:flex-start;padding:18px;border:1px solid var(--line);
+                border-radius:12px;background:rgba(255,255,255,.02)}
+  .problem-item .x{flex:0 0 28px;height:28px;border-radius:50%;background:rgba(255,82,82,.12);color:#ff8a8a;
+                   display:grid;place-items:center;font-weight:700}
+  .problem-item b{color:#fff;display:block;margin-bottom:2px}
+  .problem-item span{color:var(--muted);font-size:.92rem}
+
+  /* RUBROS */
+  .rubros{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+  .rubro{padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03);font-size:.92rem}
+
+  /* SCREENSHOTS */
+  .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .shot{background:#0a1525;border:1px solid var(--line);border-radius:14px;overflow:hidden;
+        box-shadow:0 20px 60px rgba(0,0,0,.4)}
+  .shot img{display:block;width:100%;height:auto;background:#0a1525}
+  .shot .cap{padding:12px 14px;font-size:.86rem;color:var(--muted);border-top:1px solid var(--line)}
+
+  /* PRICING */
+  .price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;max-width:880px;margin:0 auto}
+  .price{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;position:relative}
+  .price.featured{border-color:rgba(34,211,160,.5);box-shadow:0 20px 60px rgba(34,211,160,.12)}
+  .price small{color:var(--muted)}
+  .price .amount{font-family:'Sora';font-weight:800;font-size:2rem;color:#fff;margin:8px 0 4px}
+  .price ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:8px;font-size:.95rem;color:#C9D3E2}
+  .price ul li::before{content:"✓ ";color:var(--green);font-weight:700;margin-right:6px}
+
+  /* FORM + FINAL CTA */
+  .final{background:linear-gradient(180deg,rgba(47,123,255,.08),rgba(34,211,160,.06));
+         border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .final-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center}
+  form.lead-form{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;display:grid;gap:12px}
+  form.lead-form label{font-size:.82rem;color:var(--muted)}
+  form.lead-form input,form.lead-form textarea,form.lead-form select{
+    width:100%;background:#0a1525;border:1px solid var(--line);color:#fff;
+    padding:12px 14px;border-radius:10px;font:inherit;font-size:.95rem;outline:none;
+    transition:border-color .15s,box-shadow .15s
+  }
+  form.lead-form input:focus,form.lead-form textarea:focus,form.lead-form select:focus{
+    border-color:var(--green);box-shadow:0 0 0 3px rgba(34,211,160,.18)
+  }
+  form.lead-form textarea{min-height:90px;resize:vertical}
+  .form-note{font-size:.78rem;color:var(--muted)}
+  .form-msg{font-size:.9rem;margin-top:4px;display:none}
+  .form-msg.ok{display:block;color:var(--green)}
+  .form-msg.err{display:block;color:#ff8a8a}
+
+  /* FOOTER */
+  footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.86rem;border-top:1px solid var(--line)}
+  footer a{color:#C9D3E2;text-decoration:none}
+  footer a:hover{color:var(--green)}
+
+  /* FLOATING WHATSAPP */
+  .wa-float{position:fixed;right:20px;bottom:20px;z-index:60;background:#25D366;color:#fff;
+            width:60px;height:60px;border-radius:50%;display:grid;place-items:center;text-decoration:none;
+            box-shadow:0 14px 30px rgba(37,211,102,.4);transition:transform .15s}
+  .wa-float:hover{transform:scale(1.06)}
+  .wa-float svg{width:30px;height:30px}
+
+  /* RESPONSIVE */
+  @media (max-width: 920px){
+    .hero{padding:48px 0 36px}
+    .hero-grid{grid-template-columns:1fr;gap:30px}
+    .grid-3{grid-template-columns:1fr}
+    .grid-2,.problem-list,.shots,.price-grid,.final-grid{grid-template-columns:1fr}
+    section{padding:56px 0}
+    .nav-cta{padding:9px 13px;font-size:.84rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- GTM noscript (descomenta cuando agregues GTM)
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+-->
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="brand"><span class="dot"></span> NEURA</a>
+    <a href="#contacto" class="nav-cta" data-cta="nav">Pedir demo</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="badge"><span class="dot"></span> ERP a medida · Paraguay</span>
+      <h1>ERP para controlar <span style="color:var(--green)">ventas, stock y compras</span> en Paraguay.</h1>
+      <p class="lead">Implementamos un sistema adaptado a tu empresa para ordenar la operación, automatizar lo manual y tomar mejores decisiones con datos reales.</p>
+      <div class="cta-row">
+        <a href="https://wa.me/595973989068?text=Hola%20NEURA%20%F0%9F%91%8B%20Quiero%20info%20del%20ERP%20para%20mi%20empresa"
+           target="_blank" rel="noopener" class="btn btn-primary" data-cta="hero-whatsapp" onclick="trackWhatsApp('hero')">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5C18.3 1.2 15.3 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12 0-3.3-1.2-6.3-3.5-8.3zM12 22c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-3.7 1 1-3.7-.2-.4C2.5 15.7 2 13.9 2 12 2 6.5 6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/></svg>
+          Consultar por WhatsApp
+        </a>
+        <a href="#modulos" class="btn btn-ghost" data-cta="hero-modulos">Ver módulos</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Tu operación, en un solo panel</h3>
+      <div class="kpi-row">
+        <div class="kpi"><b>+38%</b><span>orden operativo</span></div>
+        <div class="kpi"><b>-60%</b><span>tiempo en reportes</span></div>
+        <div class="kpi"><b>24/7</b><span>datos en vivo</span></div>
+      </div>
+      <div class="mini-list">
+        <div class="row"><span>Ventas del día</span><span class="pill">en vivo</span></div>
+        <div class="row"><span>Stock crítico</span><span class="pill">alertas</span></div>
+        <div class="row"><span>Compras pendientes</span><span class="pill">trazabilidad</span></div>
+        <div class="row"><span>Reporte de utilidad</span><span class="pill">automático</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMAS -->
+<section class="alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Problemas que resolvemos</span>
+      <h2>Si tu empresa funciona con planillas y memoria, esto te suena.</h2>
+    </div>
+    <div class="problem-list">
+      <div class="problem-item"><span class="x">!</span><div><b>Falta de control de stock</b><span>No sabés qué tenés, qué falta ni qué se está robando.</span></div></div>
+      <div class="problem-item"><span class="x">!</span><div><b>Ventas desordenadas</b><span>Cada vendedor anota distinto, hay errores de precios y descuentos sin control.</span></div></div>
+      <div class="problem-item"><span class="x">!</span><div><b>Compras sin trazabilidad</b><span>No sabés cuánto pediste, a quién y a qué precio compraste antes.</span></div></div>
+      <div class="problem-item"><span class="x">!</span><div><b>Reportes manuales</b><span>Pasás horas armando planillas que ya están desactualizadas cuando las terminás.</span></div></div>
+      <div class="problem-item"><span class="x">!</span><div><b>No sabés cuánto se vende</b><span>Llega fin de mes y recién ahí intuís el resultado, sin datos finos por producto o sucursal.</span></div></div>
+      <div class="problem-item"><span class="x">!</span><div><b>No sabés cuánto se gana</b><span>Te falta margen real por producto, por cliente y por canal.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MÓDULOS -->
+<section id="modulos">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Módulos principales</span>
+      <h2>Todo lo que tu empresa necesita, integrado.</h2>
+      <p>Cada módulo se enciende según lo que necesita tu rubro. Sin pagar por lo que no usás.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v4H3zM5 7v14h14V7M9 11h6M9 15h6"/></svg></div><h3>Ventas</h3><p>Punto de venta rápido, precios por lista, descuentos controlados, cuenta corriente y caja.</p></div>
+      <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7l9-4 9 4-9 4-9-4zm0 6l9 4 9-4M3 17l9 4 9-4"/></svg></div><h3>Inventario</h3><p>Stock en tiempo real, multi-depósito, alertas de mínimo, transferencias y conteo físico.</p></div>
+      <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6h15l-2 9H8L6 4H3M9 20a1 1 0 100 2 1 1 0 000-2zm9 0a1 1 0 100 2 1 1 0 000-2z"/></svg></div><h3>Compras</h3><p>Órdenes de compra, recepción de mercadería, costos reales y trazabilidad por proveedor.</p></div>
+      <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 11a4 4 0 10-8 0 4 4 0 008 0zM2 21a8 8 0 0120 0"/></svg></div><h3>Clientes</h3><p>Ficha completa, historial de compras, saldo, cuenta corriente y segmentación.</p></div>
+      <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 15l4-4 4 4 5-7"/></svg></div><h3>Reportes</h3><p>Dashboard ejecutivo, ventas por producto/sucursal/vendedor, utilidad y comparativos.</p></div>
+      <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z M14 2v6h6 M9 13h6 M9 17h6"/></svg></div><h3>Facturación</h3><p>Facturación electrónica lista para SET, notas de crédito/débito y exportación contable.</p></div>
+      <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 11a4 4 0 100-8 4 4 0 000 8zm-7 10a7 7 0 0114 0 M19 8l2 2 4-4"/></svg></div><h3>Usuarios y permisos</h3><p>Roles por sucursal, accesos por módulo, auditoría de cambios y trazabilidad por usuario.</p></div>
+      <div class="card"><div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4 M12 18v4 M4.93 4.93l2.83 2.83 M16.24 16.24l2.83 2.83 M2 12h4 M18 12h4 M4.93 19.07l2.83-2.83 M16.24 7.76l2.83-2.83"/></svg></div><h3>Adaptable a tu rubro</h3><p>El sistema se configura para tu negocio. No te adaptás vos al software.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RUBROS -->
+<section class="alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Rubros ideales</span>
+      <h2>Pensado para empresas que venden, mueven stock y compran.</h2>
+    </div>
+    <div class="rubros">
+      <span class="rubro">Ferreterías</span>
+      <span class="rubro">Tiendas de ropa</span>
+      <span class="rubro">Distribuidoras</span>
+      <span class="rubro">Perfumerías</span>
+      <span class="rubro">Inmobiliarias</span>
+      <span class="rubro">Constructoras</span>
+      <span class="rubro">Comercios en general</span>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Cómo se ve por dentro</span>
+      <h2>Capturas reales del ERP en producción.</h2>
+      <p>Interfaz limpia, pensada para usuarios de mostrador, depósito y administración.</p>
+    </div>
+    <div class="shots">
+      <div class="shot"><img src="/uploads/1.png" alt="Dashboard del ERP" loading="lazy"/><div class="cap">Dashboard ejecutivo</div></div>
+      <div class="shot"><img src="/uploads/2.png" alt="Módulo de ventas" loading="lazy"/><div class="cap">Ventas / Punto de venta</div></div>
+      <div class="shot"><img src="/uploads/3.png" alt="Módulo de inventario" loading="lazy"/><div class="cap">Inventario / Stock</div></div>
+      <div class="shot"><img src="/uploads/4.png" alt="Módulo de compras" loading="lazy"/><div class="cap">Compras y proveedores</div></div>
+      <div class="shot"><img src="/uploads/5.png" alt="Reportes" loading="lazy"/><div class="cap">Reportes y análisis</div></div>
+      <div class="shot"><img src="/uploads/6.png" alt="Facturación" loading="lazy"/><div class="cap">Facturación electrónica</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section class="alt">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Inversión</span>
+      <h2>Implementación clara, sin sorpresas.</h2>
+      <p>El sistema se adapta según el rubro y el tamaño de tu empresa. Te pasamos la propuesta final tras una reunión corta de relevamiento.</p>
+    </div>
+    <div class="price-grid">
+      <div class="price featured">
+        <small>Implementación</small>
+        <div class="amount">Desde Gs. 1.500.000</div>
+        <small>Pago único · incluye configuración y capacitación</small>
+        <ul>
+          <li>Relevamiento de tu operación</li>
+          <li>Carga inicial de productos y clientes</li>
+          <li>Configuración de módulos según rubro</li>
+          <li>Capacitación al equipo</li>
+        </ul>
+      </div>
+      <div class="price">
+        <small>Mantenimiento mensual</small>
+        <div class="amount">Desde Gs. 200.000</div>
+        <small>Soporte continuo · hosting · mejoras</small>
+        <ul>
+          <li>Soporte por WhatsApp y mail</li>
+          <li>Backups automáticos</li>
+          <li>Actualizaciones del sistema</li>
+          <li>Ajustes menores incluidos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL + FORM -->
+<section id="contacto" class="final">
+  <div class="container final-grid">
+    <div>
+      <span class="eyebrow">Empezá hoy</span>
+      <h2>¿Querés ordenar tu empresa con un ERP?</h2>
+      <p>Conversemos 15 minutos. Te mostramos el sistema, entendemos tu operación y te pasamos una propuesta clara.</p>
+      <div class="cta-row">
+        <a href="https://wa.me/595973989068?text=Hola%20NEURA%20%F0%9F%91%8B%20Quiero%20info%20del%20ERP%20para%20mi%20empresa"
+           target="_blank" rel="noopener" class="btn btn-primary" data-cta="final-whatsapp" onclick="trackWhatsApp('final')">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5C18.3 1.2 15.3 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12 0-3.3-1.2-6.3-3.5-8.3zM12 22c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-3.7 1 1-3.7-.2-.4C2.5 15.7 2 13.9 2 12 2 6.5 6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/></svg>
+          Hablar por WhatsApp
+        </a>
+        <a href="tel:+595973989068" class="btn btn-ghost" data-cta="final-call" onclick="trackCall()">Llamar ahora</a>
+      </div>
+    </div>
+
+    <form class="lead-form" id="leadForm" onsubmit="return submitLead(event)">
+      <div>
+        <label for="f_name">Nombre y empresa</label>
+        <input id="f_name" name="name" type="text" required placeholder="Ej: Juan Pérez · Ferretería Sur"/>
+      </div>
+      <div>
+        <label for="f_phone">WhatsApp</label>
+        <input id="f_phone" name="phone" type="tel" required inputmode="tel" placeholder="Ej: 0981 123 456"/>
+      </div>
+      <div>
+        <label for="f_rubro">Rubro</label>
+        <select id="f_rubro" name="rubro" required>
+          <option value="">Elegí tu rubro</option>
+          <option>Ferretería</option>
+          <option>Tienda de ropa</option>
+          <option>Distribuidora</option>
+          <option>Perfumería</option>
+          <option>Inmobiliaria</option>
+          <option>Constructora</option>
+          <option>Otro comercio</option>
+        </select>
+      </div>
+      <div>
+        <label for="f_msg">¿Qué necesitás resolver? (opcional)</label>
+        <textarea id="f_msg" name="message" placeholder="Ej: control de stock multi-sucursal y reportes diarios."></textarea>
+      </div>
+      <button class="btn btn-primary" type="submit" style="justify-content:center">Quiero mi demo gratis</button>
+      <div class="form-note">Te respondemos en menos de 24 hs hábiles. No spam.</div>
+      <div id="formMsg" class="form-msg"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    © <span id="yr">2026</span> NEURA · Asunción, Paraguay · <a href="https://wa.me/595973989068" target="_blank" rel="noopener">+595 973 989 068</a> · <a href="/">neura.com.py</a>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/595973989068?text=Hola%20NEURA%20%F0%9F%91%8B%20Quiero%20info%20del%20ERP"
+   target="_blank" rel="noopener" aria-label="WhatsApp" data-cta="float-whatsapp" onclick="trackWhatsApp('float')">
+  <svg viewBox="0 0 24 24" fill="currentColor">
+    <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.3 0-.5-.1-.1-.7-1.5-.9-2.1-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-1 .9-1.2 2-.7 3.6.6 1.7 1.7 3.3 3 4.6 2.2 2.2 4.6 2.6 5.5 2.5.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
+    <path d="M20.5 3.5C18.3 1.2 15.3 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12 0-3.3-1.2-6.3-3.5-8.3zM12 22c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-3.7 1 1-3.7-.2-.4C2.5 15.7 2 13.9 2 12 2 6.5 6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/>
+  </svg>
+</a>
+
+<script>
+  // Año dinámico (sin librerías)
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // ============================================================
+  //  EVENTOS DE CONVERSIÓN
+  //  - Si usás GTM: los push() al dataLayer disparan tus tags.
+  //  - Si usás Google Ads directo: descomentá las líneas gtag()
+  //    y reemplazá AW-XXXXXXXXX/LABEL por tus IDs/labels reales.
+  // ============================================================
+  function trackWhatsApp(origin){
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'whatsapp_click', origin: origin || 'unknown' });
+      // gtag('event','conversion',{ 'send_to':'AW-XXXXXXXXX/WHATSAPP_LABEL' });
+    } catch(e){}
+  }
+  function trackCall(){
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'phone_call_click' });
+      // gtag('event','conversion',{ 'send_to':'AW-XXXXXXXXX/CALL_LABEL' });
+    } catch(e){}
+  }
+  function trackLead(){
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'lead_form_submit' });
+      // gtag('event','conversion',{ 'send_to':'AW-XXXXXXXXX/LEAD_LABEL' });
+    } catch(e){}
+  }
+
+  // ============================================================
+  //  ENVÍO DEL FORMULARIO
+  //  Por defecto: abre WhatsApp con el mensaje prellenado.
+  //  Si querés guardar en un backend (Formspree, n8n, etc.),
+  //  reemplazá el bloque marcado con TODO por un fetch().
+  // ============================================================
+  function submitLead(e){
+    e.preventDefault();
+    var f = e.target;
+    var name  = (f.name.value  || '').trim();
+    var phone = (f.phone.value || '').trim();
+    var rubro = (f.rubro.value || '').trim();
+    var msg   = (f.message.value|| '').trim();
+
+    trackLead();
+
+    // TODO: si querés persistir el lead en un backend, descomentá:
+    // fetch('https://TU-ENDPOINT', { method:'POST',
+    //   headers:{'Content-Type':'application/json'},
+    //   body: JSON.stringify({name,phone,rubro,msg, source:'erp-landing'})
+    // });
+
+    var text = 'Hola NEURA 👋 Quiero info del ERP.\n\n' +
+               'Nombre/Empresa: ' + name + '\n' +
+               'WhatsApp: ' + phone + '\n' +
+               'Rubro: ' + rubro +
+               (msg ? '\nNecesidad: ' + msg : '');
+    var url = 'https://wa.me/595973989068?text=' + encodeURIComponent(text);
+
+    var box = document.getElementById('formMsg');
+    box.className = 'form-msg ok';
+    box.textContent = '¡Listo! Te llevamos a WhatsApp para terminar la consulta…';
+    window.open(url, '_blank', 'noopener');
+    return false;
+  }
+</script>
+
+</body>
+</html>
