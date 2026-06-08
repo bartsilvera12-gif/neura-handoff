@@ -115,13 +115,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                background:radial-gradient(220px 140px at 50% 30%, rgba(34,211,160,.18), transparent 70%)}
   .zentra-logo{width:auto;max-width:78%;height:auto;max-height:140px;object-fit:contain;
                filter:drop-shadow(0 12px 28px rgba(34,211,160,.35))}
-  /* Zentra animated stage — tamaño natural de las imágenes */
-  .zentra-stage{position:relative;width:100%;min-height:240px;overflow:hidden;display:grid;place-items:center}
-  .zentra-letras{display:block;width:auto;height:auto;max-width:100%;
+  /* Zentra animated stage — tamaño contenido tipo logo */
+  .zentra-stage{position:relative;width:100%;height:170px;overflow:hidden;display:grid;place-items:center}
+  .zentra-letras{display:block;width:auto;height:auto;max-width:78%;max-height:110px;
                  transform:scale(.7);opacity:0;
                  filter:drop-shadow(0 14px 30px rgba(34,211,160,.4));
                  animation:zentraLetras 5.2s cubic-bezier(.2,.7,.2,1) infinite}
-  .zentra-cursor{position:absolute;left:50%;top:50%;width:auto;height:auto;pointer-events:none;
+  .zentra-cursor{position:absolute;left:50%;top:50%;width:38px;height:auto;pointer-events:none;
                  filter:drop-shadow(0 6px 14px rgba(0,0,0,.55));opacity:0;will-change:transform,opacity}
   /* cursor1.png apunta hacia ARRIBA-IZQUIERDA → entra desde abajo-derecha y viaja en esa dirección */
   .zentra-cursor.c1{animation:cursor1 5.2s cubic-bezier(.45,.05,.2,1) infinite}
