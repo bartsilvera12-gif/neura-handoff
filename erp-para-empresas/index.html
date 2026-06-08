@@ -108,7 +108,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     border:1px solid var(--line);border-radius:18px;padding:22px;
     box-shadow:0 30px 80px rgba(0,0,0,.35);
   }
-  .hero-card h3{margin:0 0 14px;color:#fff}
+  .hero-card h3{margin:0;color:#fff;font-size:1.05rem;line-height:1.25}
+  .hero-card-head{display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+  .hero-card-logo{width:54px;height:54px;border-radius:12px;object-fit:contain;background:rgba(255,255,255,.04);padding:6px;flex:0 0 54px}
+  .hero-card-sub{margin:4px 0 0;font-size:.78rem;color:var(--muted);letter-spacing:.02em}
   .kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
   .kpi{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:14px}
   .kpi b{display:block;font-family:'Sora';font-size:1.4rem;color:#fff}
@@ -237,7 +240,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
     <div class="hero-card">
-      <h3>Tu operación, en un solo panel</h3>
+      <div class="hero-card-head">
+        <img src="/uploads/zentralogo.png" alt="Zentra ERP" class="hero-card-logo"/>
+        <div>
+          <h3>Tu operación, en un solo panel</h3>
+          <p class="hero-card-sub">Powered by Zentra · ERP por NEURA</p>
+        </div>
+      </div>
       <div class="kpi-row">
         <div class="kpi"><b>+38%</b><span>orden operativo</span></div>
         <div class="kpi"><b>-60%</b><span>tiempo en reportes</span></div>
