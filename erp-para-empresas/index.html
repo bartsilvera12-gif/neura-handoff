@@ -115,46 +115,76 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                background:radial-gradient(220px 140px at 50% 30%, rgba(34,211,160,.18), transparent 70%)}
   .zentra-logo{width:auto;max-width:78%;height:auto;max-height:140px;object-fit:contain;
                filter:drop-shadow(0 12px 28px rgba(34,211,160,.35))}
-  /* Zentra animated stage — tamaño contenido tipo logo */
-  .zentra-stage{position:relative;width:100%;height:170px;overflow:hidden;display:grid;place-items:center}
-  .zentra-letras{display:block;width:auto;height:auto;max-width:78%;max-height:110px;
-                 transform:scale(.7);opacity:0;
-                 filter:drop-shadow(0 14px 30px rgba(34,211,160,.4));
-                 animation:zentraLetras 5.2s cubic-bezier(.2,.7,.2,1) infinite}
-  .zentra-cursor{position:absolute;left:50%;top:50%;width:38px;height:auto;pointer-events:none;
-                 filter:drop-shadow(0 6px 14px rgba(0,0,0,.55));opacity:0;will-change:transform,opacity}
-  /* cursor1.png apunta hacia ARRIBA-IZQUIERDA → entra desde abajo-derecha y viaja en esa dirección */
-  .zentra-cursor.c1{animation:cursor1 5.2s cubic-bezier(.45,.05,.2,1) infinite}
-  /* cursor2.png apunta hacia ARRIBA-DERECHA → entra desde abajo-izquierda y viaja en esa dirección */
-  .zentra-cursor.c2{animation:cursor2 5.2s cubic-bezier(.45,.05,.2,1) infinite}
-  @keyframes cursor1{
-     0%   { transform:translate(140%, 180%); opacity:0; }
-     10%  { opacity:1; }
-     45%  { transform:translate(-90%,-60%); opacity:1; }
-     52%  { transform:translate(-95%,-65%) scale(.82); opacity:1; }
-     60%  { transform:translate(-90%,-60%) scale(1); opacity:1; }
-     85%  { transform:translate(-90%,-60%); opacity:.55; }
-     100% { transform:translate(-90%,-60%); opacity:0; }
+  /* Zentra ensamblaje — dos mitades de letras.png + cursores que las guían */
+  .zentra-stage{position:relative;width:100%;height:200px;overflow:hidden;display:flex;
+                flex-direction:column;align-items:center;justify-content:center;gap:10px}
+  .z-build{position:relative;width:78%;max-width:300px;height:90px}
+  /* Cada mitad es un div que muestra letras.png con clip-path,
+     pero ambos usan el MISMO background-size/position para que al unirse
+     coincidan pixel-perfect formando el wordmark completo. */
+  .z-piece{position:absolute;left:0;top:0;width:100%;height:100%;
+           background-image:url('/uploads/letras.png');
+           background-repeat:no-repeat;background-position:center;background-size:contain;
+           filter:drop-shadow(0 10px 24px rgba(34,211,160,.35));
+           opacity:0;will-change:transform,opacity}
+  .z-left { clip-path:inset(0 50% 0 0); animation:zLeft  5.8s cubic-bezier(.45,.05,.2,1) infinite; }
+  .z-right{ clip-path:inset(0 0 0 50%); animation:zRight 5.8s cubic-bezier(.45,.05,.2,1) infinite; }
+  .z-cursor{position:absolute;width:38px;height:auto;pointer-events:none;
+            filter:drop-shadow(0 6px 14px rgba(0,0,0,.55));opacity:0;will-change:transform,opacity}
+  /* cursor1 apunta arriba-izquierda → entra DESDE arriba-izquierda y arrastra la mitad izquierda hacia el centro */
+  .z-cursor.c1{left:0;top:0;animation:c1 5.8s cubic-bezier(.45,.05,.2,1) infinite;}
+  /* cursor2 apunta arriba-derecha → entra DESDE arriba-derecha y arrastra la mitad derecha hacia el centro */
+  .z-cursor.c2{right:0;top:0;animation:c2 5.8s cubic-bezier(.45,.05,.2,1) infinite;}
+
+  @keyframes zLeft{
+     0%   { transform:translate(-110%, -40%); opacity:0; }
+     8%   { opacity:1; }
+     35%  { transform:translate(0,0); opacity:1; }
+     /* hold ensamblado */
+     90%  { transform:translate(0,0); opacity:1; }
+     100% { transform:translate(0,0); opacity:0; }
   }
-  @keyframes cursor2{
-     0%   { transform:translate(-240%, 180%); opacity:0; }
-     10%  { opacity:1; }
-     45%  { transform:translate(0%,-60%); opacity:1; }
-     52%  { transform:translate(5%,-65%) scale(.82); opacity:1; }
-     60%  { transform:translate(0%,-60%) scale(1); opacity:1; }
-     85%  { transform:translate(0%,-60%); opacity:.55; }
-     100% { transform:translate(0%,-60%); opacity:0; }
+  @keyframes zRight{
+     0%   { transform:translate(110%, -40%); opacity:0; }
+     8%   { opacity:1; }
+     35%  { transform:translate(0,0); opacity:1; }
+     90%  { transform:translate(0,0); opacity:1; }
+     100% { transform:translate(0,0); opacity:0; }
   }
-  @keyframes zentraLetras{
-     0%, 50% { transform:scale(.7); opacity:0; filter:blur(8px) drop-shadow(0 0 0 rgba(34,211,160,0)); }
-     60%     { transform:scale(1.06); opacity:1; filter:blur(0) drop-shadow(0 14px 30px rgba(34,211,160,.55)); }
-     70%     { transform:scale(1); opacity:1; }
-     90%     { transform:scale(1); opacity:1; }
-     100%    { transform:scale(.92); opacity:0; }
+  /* Cursor1: precede levemente a la pieza izquierda. Empieza fuera (arriba-izquierda)
+     y llega al borde derecho de la mitad izquierda (donde la "suelta"). */
+  @keyframes c1{
+     0%   { transform:translate(-120%,-90%); opacity:0; }
+     8%   { opacity:1; }
+     35%  { transform:translate(38%, 18%); opacity:1; }   /* posición de "soltado" */
+     45%  { transform:translate(38%, 18%) scale(.82); opacity:1; } /* click */
+     55%  { transform:translate(38%, 18%) scale(1);   opacity:1; }
+     /* retira en su dirección de apuntado (arriba-izquierda) */
+     75%  { transform:translate(-30%,-50%); opacity:0; }
+     100% { transform:translate(-120%,-90%); opacity:0; }
+  }
+  @keyframes c2{
+     0%   { transform:translate(120%,-90%); opacity:0; }
+     8%   { opacity:1; }
+     35%  { transform:translate(-38%, 18%); opacity:1; }
+     45%  { transform:translate(-38%, 18%) scale(.82); opacity:1; }
+     55%  { transform:translate(-38%, 18%) scale(1);   opacity:1; }
+     75%  { transform:translate(30%,-50%); opacity:0; }
+     100% { transform:translate(120%,-90%); opacity:0; }
+  }
+  .z-erp{margin:0;font-family:'Sora','Inter',sans-serif;font-weight:700;letter-spacing:.18em;
+         font-size:.78rem;color:#fff;opacity:0;transform:translateY(6px);
+         animation:zErp 5.8s ease infinite}
+  @keyframes zErp{
+     0%, 55% { opacity:0; transform:translateY(6px); }
+     65%     { opacity:1; transform:translateY(0); }
+     90%     { opacity:1; transform:translateY(0); }
+     100%    { opacity:0; transform:translateY(6px); }
   }
   @media (prefers-reduced-motion: reduce){
-     .zentra-letras{animation:none;opacity:1;transform:scale(1);filter:none}
-     .zentra-cursor{display:none}
+     .z-piece{animation:none;opacity:1;transform:translate(0,0)}
+     .z-cursor{display:none}
+     .z-erp{animation:none;opacity:1;transform:none}
   }
   .zentra-tagline{margin:14px 0 0;color:#fff;font-family:'Sora','Inter',sans-serif;
                   font-weight:600;font-size:1rem;line-height:1.35}
@@ -288,10 +318,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="hero-card zentra-focus">
       <div class="zentra-hero">
-        <div class="zentra-stage" aria-label="Zentra ERP">
-          <img src="/uploads/cursor1.png" alt="" class="zentra-cursor c1"/>
-          <img src="/uploads/cursor2.png" alt="" class="zentra-cursor c2"/>
-          <img src="/uploads/letras.png" alt="Zentra ERP" class="zentra-letras"/>
+        <div class="zentra-stage" aria-label="Ensamblaje del logo Zentra">
+          <div class="z-build">
+            <div class="z-piece z-left" role="presentation"></div>
+            <div class="z-piece z-right" role="presentation"></div>
+            <img src="/uploads/cursor1.png" alt="" class="z-cursor c1"/>
+            <img src="/uploads/cursor2.png" alt="" class="z-cursor c2"/>
+          </div>
+          <p class="z-erp">ZENTRA ERP</p>
         </div>
         <p class="zentra-tagline">El ERP que ordena tu empresa.<br/><span>Implementado por NEURA</span></p>
       </div>
