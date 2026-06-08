@@ -109,9 +109,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     box-shadow:0 30px 80px rgba(0,0,0,.35);
   }
   .hero-card h3{margin:0;color:#fff;font-size:1.05rem;line-height:1.25}
-  .hero-card-head{display:flex;align-items:center;gap:14px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line)}
-  .hero-card-logo{width:54px;height:54px;border-radius:12px;object-fit:contain;background:rgba(255,255,255,.04);padding:6px;flex:0 0 54px}
-  .hero-card-sub{margin:4px 0 0;font-size:.78rem;color:var(--muted);letter-spacing:.02em}
+  .zentra-focus{padding:28px 22px}
+  .zentra-hero{display:flex;flex-direction:column;align-items:center;text-align:center;
+               padding:14px 8px 22px;margin-bottom:18px;border-bottom:1px solid var(--line);
+               background:radial-gradient(220px 140px at 50% 30%, rgba(34,211,160,.18), transparent 70%)}
+  .zentra-logo{width:auto;max-width:78%;height:auto;max-height:140px;object-fit:contain;
+               filter:drop-shadow(0 12px 28px rgba(34,211,160,.35))}
+  .zentra-tagline{margin:14px 0 0;color:#fff;font-family:'Sora','Inter',sans-serif;
+                  font-weight:600;font-size:1rem;line-height:1.35}
+  .zentra-tagline span{display:inline-block;margin-top:4px;font-weight:400;font-size:.82rem;color:var(--muted)}
   .kpi-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
   .kpi{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:14px}
   .kpi b{display:block;font-family:'Sora';font-size:1.4rem;color:#fff}
@@ -239,13 +245,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="#modulos" class="btn btn-ghost" data-cta="hero-modulos">Ver módulos</a>
       </div>
     </div>
-    <div class="hero-card">
-      <div class="hero-card-head">
-        <img src="/uploads/zentralogo.png" alt="Zentra ERP" class="hero-card-logo"/>
-        <div>
-          <h3>Tu operación, en un solo panel</h3>
-          <p class="hero-card-sub">Powered by Zentra · ERP por NEURA</p>
-        </div>
+    <div class="hero-card zentra-focus">
+      <div class="zentra-hero">
+        <img src="/uploads/zentralogo.png" alt="Zentra ERP" class="zentra-logo"/>
+        <p class="zentra-tagline">El ERP que ordena tu empresa.<br/><span>Implementado por NEURA</span></p>
       </div>
       <div class="kpi-row">
         <div class="kpi"><b>+38%</b><span>orden operativo</span></div>
@@ -255,8 +258,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="mini-list">
         <div class="row"><span>Ventas del día</span><span class="pill">en vivo</span></div>
         <div class="row"><span>Stock crítico</span><span class="pill">alertas</span></div>
-        <div class="row"><span>Compras pendientes</span><span class="pill">trazabilidad</span></div>
-        <div class="row"><span>Reporte de utilidad</span><span class="pill">automático</span></div>
       </div>
     </div>
   </div>
