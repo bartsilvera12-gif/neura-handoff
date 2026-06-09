@@ -303,6 +303,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .form-msg.ok{display:block;color:var(--green)}
   .form-msg.err{display:block;color:#ff8a8a}
 
+  /* Custom dropdown */
+  .dd-wrap{position:relative}
+  .dd{position:relative}
+  .dd-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;
+              background:#0a1525;border:1px solid var(--line);color:#fff;
+              padding:12px 14px;border-radius:10px;font:inherit;font-size:.95rem;cursor:pointer;
+              transition:border-color .15s,box-shadow .15s;text-align:left}
+  .dd-trigger:hover{border-color:rgba(255,255,255,.18)}
+  .dd-trigger:focus,.dd.open .dd-trigger{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(34,211,160,.18)}
+  .dd-label[data-placeholder="true"]{color:var(--muted)}
+  .dd-caret{transition:transform .2s ease;flex-shrink:0;color:var(--muted)}
+  .dd.open .dd-caret{transform:rotate(180deg);color:var(--green)}
+  .dd-menu{position:absolute;left:0;right:0;top:calc(100% + 6px);z-index:20;
+           background:#0d1a2e;border:1px solid var(--line);border-radius:12px;
+           list-style:none;padding:6px;margin:0;
+           box-shadow:0 18px 50px rgba(0,0,0,.55),0 0 0 1px rgba(34,211,160,.04) inset;
+           max-height:280px;overflow-y:auto;
+           opacity:0;transform:translateY(-6px) scale(.98);pointer-events:none;
+           transition:opacity .15s ease,transform .15s ease}
+  .dd.open .dd-menu{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+  .dd-menu li{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;
+              color:#E8EEF7;font-size:.94rem;cursor:pointer;user-select:none;
+              transition:background .12s ease,color .12s ease}
+  .dd-menu li:hover,.dd-menu li.active{background:rgba(34,211,160,.10);color:#fff}
+  .dd-menu li.selected{color:var(--green)}
+  .dd-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);transition:background .15s}
+  .dd-menu li:hover .dd-dot,.dd-menu li.active .dd-dot,.dd-menu li.selected .dd-dot{background:var(--green);box-shadow:0 0 8px var(--glow)}
+  /* Scrollbar dark */
+  .dd-menu::-webkit-scrollbar{width:8px}
+  .dd-menu::-webkit-scrollbar-thumb{background:rgba(255,255,255,.12);border-radius:8px}
+  .dd-menu::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,.22)}
+
   /* FOOTER */
   footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.86rem;border-top:1px solid var(--line)}
   footer a{color:#C9D3E2;text-decoration:none}
@@ -584,18 +616,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <label for="f_phone">WhatsApp</label>
         <input id="f_phone" name="phone" type="tel" required inputmode="tel" placeholder="Ej: 0981 123 456"/>
       </div>
-      <div>
-        <label for="f_rubro">Rubro</label>
-        <select id="f_rubro" name="rubro" required>
-          <option value="">Elegí tu rubro</option>
-          <option>Ferretería</option>
-          <option>Tienda de ropa</option>
-          <option>Distribuidora</option>
-          <option>Perfumería</option>
-          <option>Inmobiliaria</option>
-          <option>Constructora</option>
-          <option>Otro comercio</option>
-        </select>
+      <div class="dd-wrap">
+        <label for="f_rubro_btn">Rubro</label>
+        <div class="dd" id="rubroDD">
+          <button type="button" id="f_rubro_btn" class="dd-trigger" aria-haspopup="listbox" aria-expanded="false">
+            <span class="dd-label" data-placeholder="true">Elegí tu rubro</span>
+            <svg class="dd-caret" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="dd-menu" role="listbox" tabindex="-1">
+            <li role="option" data-value="Ferretería"><span class="dd-dot"></span>Ferretería</li>
+            <li role="option" data-value="Tienda de ropa"><span class="dd-dot"></span>Tienda de ropa</li>
+            <li role="option" data-value="Distribuidora"><span class="dd-dot"></span>Distribuidora</li>
+            <li role="option" data-value="Perfumería"><span class="dd-dot"></span>Perfumería</li>
+            <li role="option" data-value="Inmobiliaria"><span class="dd-dot"></span>Inmobiliaria</li>
+            <li role="option" data-value="Constructora"><span class="dd-dot"></span>Constructora</li>
+            <li role="option" data-value="Otro comercio"><span class="dd-dot"></span>Otro comercio</li>
+          </ul>
+          <input type="hidden" id="f_rubro" name="rubro" required/>
+        </div>
       </div>
       <div>
         <label for="f_msg">¿Qué necesitás resolver? (opcional)</label>
@@ -625,6 +663,61 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
   // Año dinámico (sin librerías)
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Custom dropdown (rubro)
+  (function(){
+    const dd = document.getElementById('rubroDD');
+    if(!dd) return;
+    const trigger = dd.querySelector('.dd-trigger');
+    const label = dd.querySelector('.dd-label');
+    const menu = dd.querySelector('.dd-menu');
+    const items = [...menu.querySelectorAll('li')];
+    const hidden = document.getElementById('f_rubro');
+    let activeIdx = -1;
+
+    function open(){
+      dd.classList.add('open');
+      trigger.setAttribute('aria-expanded','true');
+      const sel = items.findIndex(i => i.classList.contains('selected'));
+      setActive(sel >= 0 ? sel : 0);
+    }
+    function close(){
+      dd.classList.remove('open');
+      trigger.setAttribute('aria-expanded','false');
+      setActive(-1);
+    }
+    function setActive(i){
+      items.forEach(it => it.classList.remove('active'));
+      activeIdx = i;
+      if(i >= 0 && items[i]) items[i].classList.add('active');
+    }
+    function pick(i){
+      items.forEach(it => it.classList.remove('selected'));
+      const it = items[i];
+      it.classList.add('selected');
+      hidden.value = it.dataset.value;
+      label.textContent = it.dataset.value;
+      label.removeAttribute('data-placeholder');
+      close();
+    }
+
+    trigger.addEventListener('click', e => { e.stopPropagation(); dd.classList.contains('open') ? close() : open(); });
+    items.forEach((it,i) => {
+      it.addEventListener('mouseenter', () => setActive(i));
+      it.addEventListener('click', () => pick(i));
+    });
+    document.addEventListener('click', e => { if(!dd.contains(e.target)) close(); });
+    trigger.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown'){ e.preventDefault(); open(); }
+    });
+    dd.addEventListener('keydown', e => {
+      if(!dd.classList.contains('open')) return;
+      if(e.key === 'Escape'){ close(); trigger.focus(); }
+      if(e.key === 'ArrowDown'){ e.preventDefault(); setActive(Math.min(items.length-1, activeIdx+1)); }
+      if(e.key === 'ArrowUp'){ e.preventDefault(); setActive(Math.max(0, activeIdx-1)); }
+      if(e.key === 'Enter' && activeIdx >= 0){ e.preventDefault(); pick(activeIdx); trigger.focus(); }
+    });
+  })();
 
   // ============================================================
   //  EVENTOS DE CONVERSIÓN
@@ -667,6 +760,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     var phone = (f.phone.value || '').trim();
     var rubro = (f.rubro.value || '').trim();
     var msg   = (f.message.value|| '').trim();
+
+    if(!rubro){
+      var box = document.getElementById('formMsg');
+      box.className = 'form-msg err';
+      box.textContent = 'Elegí un rubro para continuar.';
+      var trig = document.getElementById('f_rubro_btn');
+      if(trig) trig.focus();
+      return false;
+    }
 
     trackLead();
 
