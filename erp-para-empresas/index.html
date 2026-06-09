@@ -244,9 +244,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .mod-grid{grid-template-columns:1fr}
   }
 
-  /* RUBROS */
-  .rubros{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-  .rubro{padding:10px 16px;border:1px solid var(--line);border-radius:999px;background:rgba(255,255,255,.03);font-size:.92rem}
+  /* RUBROS — marquee infinito */
+  .rubros-marquee{position:relative;overflow:hidden;width:100%;
+                  mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%);
+                  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 8%,#000 92%,transparent 100%)}
+  .rubros-track{display:flex;gap:14px;width:max-content;will-change:transform;
+                animation:rubrosScroll 32s linear infinite}
+  .rubros-marquee:hover .rubros-track{animation-play-state:paused}
+  .rubro{flex-shrink:0;padding:11px 20px;border:1px solid var(--line);border-radius:999px;
+         background:rgba(255,255,255,.03);font-size:.94rem;color:#E8EEF7;white-space:nowrap;
+         transition:background .2s,border-color .2s,transform .2s}
+  .rubro:hover{background:rgba(34,211,160,.10);border-color:rgba(34,211,160,.35);transform:translateY(-2px)}
+  @keyframes rubrosScroll{
+     from { transform:translateX(0); }
+     to   { transform:translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+     .rubros-track{animation:none;flex-wrap:wrap;justify-content:center;width:100%}
+  }
 
   /* SCREENSHOTS */
   .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -479,14 +494,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="eyebrow">Rubros ideales</span>
       <h2>Pensado para empresas que venden, mueven stock y compran.</h2>
     </div>
-    <div class="rubros">
-      <span class="rubro">Ferreterías</span>
-      <span class="rubro">Tiendas de ropa</span>
-      <span class="rubro">Distribuidoras</span>
-      <span class="rubro">Perfumerías</span>
-      <span class="rubro">Inmobiliarias</span>
-      <span class="rubro">Constructoras</span>
-      <span class="rubro">Comercios en general</span>
+    <div class="rubros-marquee" aria-label="Rubros que usan el ERP">
+      <div class="rubros-track">
+        <!-- set 1 -->
+        <span class="rubro">Ferreterías</span>
+        <span class="rubro">Tiendas de ropa</span>
+        <span class="rubro">Distribuidoras</span>
+        <span class="rubro">Perfumerías</span>
+        <span class="rubro">Inmobiliarias</span>
+        <span class="rubro">Constructoras</span>
+        <span class="rubro">Comercios en general</span>
+        <!-- set 2 (duplicado para loop infinito) -->
+        <span class="rubro" aria-hidden="true">Ferreterías</span>
+        <span class="rubro" aria-hidden="true">Tiendas de ropa</span>
+        <span class="rubro" aria-hidden="true">Distribuidoras</span>
+        <span class="rubro" aria-hidden="true">Perfumerías</span>
+        <span class="rubro" aria-hidden="true">Inmobiliarias</span>
+        <span class="rubro" aria-hidden="true">Constructoras</span>
+        <span class="rubro" aria-hidden="true">Comercios en general</span>
+      </div>
     </div>
   </div>
 </section>
