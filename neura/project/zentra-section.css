@@ -39,7 +39,7 @@
     0 0 0 1px rgba(127,214,201,0.18),
     0 0 80px -20px rgba(88,177,181,0.35);
 }
-.zs .zs-video { display: block; width: 100%; height: auto; aspect-ratio: 1920 / 896; background: #07101F; }
+.zs .zs-video { display: block; width: 100%; height: auto; aspect-ratio: 1764 / 824; background: #07101F; }
 
 /* Módulos + botón */
 .zs .zs-foot {

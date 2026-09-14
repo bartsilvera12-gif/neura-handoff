@@ -1,4 +1,4 @@
-// Zentra ERP (#zentra): el video de demostración del sistema (2:57, sin sonido),
+// Zentra ERP (#zentra): el video de demostración del sistema (1:40, sin sonido; chats de clientes desenfocados),
 // en bucle mientras se ve, con controles.
 // Lo usan app.jsx (escritorio) y mobile.jsx.
 import React from 'react';
