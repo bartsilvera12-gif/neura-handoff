@@ -1,7 +1,7 @@
 /* HERO */
 .hero {
   position: relative;
-  padding: 140px 0 80px;
+  padding: 200px 0 80px;
   overflow: hidden;
   min-height: 100vh;
 }
@@ -42,11 +42,6 @@
 
 .hero-copy h1 { margin: 22px 0 24px; }
 .hero-copy h1 .hl { color: var(--ink); position: relative; }
-.hero-copy h1 .hl::after {
-  content: ''; position: absolute; left: 0; right: 0; bottom: 4px; height: 8px;
-  background: var(--accent-green); opacity: 0.35; z-index: -1;
-  border-radius: 4px;
-}
 .hero-copy h1 .hl-2 {
   background: linear-gradient(120deg, var(--accent-blue), var(--accent-green));
   -webkit-background-clip: text; background-clip: text;

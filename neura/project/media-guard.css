@@ -1,0 +1,9 @@
+/* Fotos y videos: no se arrastran ni se seleccionan, y en el celular mantener apretado
+   no muestra "Guardar imagen" (ver media-guard.js). */
+img,
+video {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}

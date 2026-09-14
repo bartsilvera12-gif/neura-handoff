@@ -1,0 +1,71 @@
+/* Masonry — React Bits */
+.list {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.item-wrapper {
+  position: absolute;
+  will-change: transform, width, height, opacity;
+  padding: 6px;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  /* Oculto hasta que GSAP lo posiciona y lo anima */
+  opacity: 0;
+  display: block;
+  text-decoration: none;
+}
+
+.item-wrapper > .item-img {
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.item-wrapper:focus-visible { outline: none; }
+.item-wrapper:focus-visible > .item-img { box-shadow: 0 0 0 2px var(--accent-green, #22D3A0); }
+
+/* Nombre del proyecto: aparece al pasar el mouse o con el teclado */
+.item-label {
+  position: absolute; left: 10px; bottom: 10px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(7,16,31,0.78);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: #F4F7FB;
+  font: 500 11px/1.2 var(--font-body, system-ui, sans-serif);
+  letter-spacing: 0.04em;
+  text-transform: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+.item-wrapper:hover .item-label,
+.item-wrapper:focus-visible .item-label { opacity: 1; transform: translateY(0); }
+
+/* Táctil: no hay hover, el nombre queda visible. Y no se sale de tarjetas angostas. */
+.item-label { max-width: calc(100% - 20px); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (hover: none) {
+  .item-label { opacity: 1; transform: none; }
+}
+
+/* Ítems con video: cubre la tarjeta igual que la imagen de fondo */
+.item-video {
+  position: absolute; inset: 0;
+  display: block;
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.m-app .item-video { height: 100%; }

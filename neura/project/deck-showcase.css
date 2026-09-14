@@ -1,0 +1,99 @@
+/* Vitrina animada de "Nuestro trabajo" (deck-showcase.jsx) */
+.ds-stage {
+  --ds-gap: 14px;
+  position: relative;
+  display: flex;
+  gap: var(--ds-gap);
+  height: clamp(520px, 52vw, 680px);
+  padding: 0 var(--ds-gap);
+  overflow: hidden;
+  border-radius: 28px;
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 45%, rgba(79,174,178,0.12), transparent 70%),
+    #0B1220;
+  box-shadow: 0 30px 60px -30px rgba(7,16,31,0.55);
+  isolation: isolate;
+}
+/* Bordes superior e inferior que se funden con el panel */
+.ds-stage::before,
+.ds-stage::after {
+  content: '';
+  position: absolute; left: 0; right: 0; z-index: 10;
+  height: 56px;
+  pointer-events: none;
+}
+.ds-stage::before { top: 0; background: linear-gradient(#0B1220, transparent); }
+.ds-stage::after { bottom: 0; background: linear-gradient(transparent, #0B1220); }
+
+.ds-col { position: relative; flex: 1 1 0; min-width: 0; }
+.ds-track { will-change: transform; }
+
+.ds-tile {
+  position: relative;
+  margin-bottom: var(--ds-gap); /* margen (no gap) para que las dos copias midan igual */
+  will-change: transform;
+}
+.ds-tile--pair { display: flex; gap: 10px; align-items: center; }
+.ds-tile--pair .ds-card { flex: 1 1 0; min-width: 0; }
+
+.ds-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #151E2E;
+  box-shadow: 0 14px 30px -14px rgba(0,0,0,0.6);
+}
+.ds-card:focus-visible { outline: 2px solid var(--accent-green, #22D3A0); outline-offset: 2px; }
+/* La caja ya tiene la proporción del archivo: "cover" no recorta nada visible */
+.ds-media { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+.ds-label {
+  position: absolute; left: 10px; bottom: 10px;
+  max-width: calc(100% - 20px);
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(7,16,31,0.78);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  color: #F4F7FB;
+  font: 500 11px/1.2 var(--font-body, system-ui, sans-serif);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity .25s ease, transform .25s ease;
+  pointer-events: none;
+}
+.ds-card:hover .ds-label,
+.ds-card:focus-visible .ds-label { opacity: 1; transform: none; }
+@media (hover: none) { .ds-label { opacity: 1; transform: none; } }
+
+/* Celular: .m-app .x gana al reset móvil (.m-app * { margin:0; padding:0 }, img { height:auto }) */
+.m-app .ds-stage { --ds-gap: 10px; height: 560px; margin-top: 24px; padding: 0 var(--ds-gap); border-radius: 22px; }
+.m-app .ds-tile { margin-bottom: var(--ds-gap); }
+.m-app .ds-card { border-radius: 12px; }
+.m-app .ds-media { height: 100%; }
+.m-app .ds-label { left: 8px; bottom: 8px; max-width: calc(100% - 16px); padding: 5px 9px; font-size: 10.5px; }
+
+/* Pantalla completa: de borde a borde y del alto de la ventana */
+.ds-stage--full {
+  height: 100vh;
+  height: 100svh;
+  min-height: 560px;
+  border-radius: 0;
+  box-shadow: none;
+}
+/* La sección termina con el panel (sin franja blanca debajo) */
+section.work-section { padding-bottom: 0; }
+.m-app .ds-stage--full {
+  height: 100svh;
+  min-height: 520px;
+  max-width: none;
+  margin: 24px calc(var(--m-pad) * -1) 0;
+  border-radius: 0;
+}
+/* styles.css fuerza "section { padding: 56px 0 !important }" en <=768px */
+.m-app section.m-work.m-section { padding-bottom: 0 !important; }

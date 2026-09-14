@@ -7,15 +7,15 @@ import {
   TweakRadio,
   TweakToggle,
 } from './tweaks-panel.jsx';
-import { Hero } from './hero.jsx';
+import GlyphHero from './glyph-hero.jsx';
+import Work from './work.jsx';
+import BrandClosing from './brand-closing.jsx';
+import Services from './services.jsx';
+import ZentraSection from './zentra-section.jsx';
 import {
-  Problem,
   Pillars,
   Method,
   Differential,
-  Services,
-  Projects,
-  CTA,
   Footer,
 } from './sections.jsx';
 import { Clients } from './clients.jsx';
@@ -36,25 +36,46 @@ const ACCENT_PRESETS = {
 
 const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+  const closeMenu = () => setMenuOpen(false);
   return (
-    <nav className={`nav ${scrolled ? 'scrolled' : ''}`}>
+    <nav className={`nav ${scrolled ? 'scrolled' : ''}${menuOpen ? ' menu-open' : ''}`}>
       <div className="container">
         <div className="nav-inner">
-          <a href="#" className="nav-logo">
+          <a href="#" className="nav-logo" onClick={closeMenu}>
             <span className="mark"/>
             <span>NEURA</span>
           </a>
           <div className="nav-links">
-            <a href="#servicios">Servicios</a>
-            <a href="#metodo">Método</a>
-<a href="#contacto">Contacto</a>
+            <a href="#servicios" onClick={closeMenu}>Servicios</a>
+            <a href="#metodo" onClick={closeMenu}>Método</a>
+            <a href="#contacto" onClick={closeMenu}>Contacto</a>
           </div>
-          <a href="#contacto" className="nav-cta">Diagnóstico gratis</a>
+          <a href="#contacto" className="nav-cta" onClick={closeMenu}>Diagnóstico gratis</a>
+          <button
+            type="button"
+            className="nav-burger"
+            aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen(o => !o)}
+          >
+            <span/><span/><span/>
+          </button>
+        </div>
+        <div className="nav-mobile" role="menu">
+          <a href="#servicios" onClick={closeMenu}>Servicios</a>
+          <a href="#metodo" onClick={closeMenu}>Método</a>
+          <a href="#contacto" onClick={closeMenu}>Contacto</a>
+          <a href="#contacto" className="nav-mobile-cta" onClick={closeMenu}>Diagnóstico gratis</a>
         </div>
       </div>
     </nav>
@@ -112,15 +133,14 @@ const App = () => {
   return (
     <>
       <Nav />
-      <Hero />
-      <Problem />
-      <Pillars />
-      <div id="metodo"><Method /></div>
-      <Differential />
+      <GlyphHero />
+      <Work />
       <Services />
+      <ZentraSection />
+      <div id="metodo"><Method /></div>
       <Clients />
-      <Projects />
-      <CTA />
+      <Differential />
+      <BrandClosing />
       <Footer />
 
       <TweaksPanel title="Tweaks NEURA">
@@ -167,20 +187,51 @@ const App = () => {
   );
 };
 
-export const WhatsAppBubble = () => (
-  <a
-    href="https://wa.me/595"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="wa-bubble"
-    aria-label="Contactar por WhatsApp"
-  >
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
-      <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.3 0-.5-.1-.1-.7-1.5-.9-2.1-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-1 .9-1.2 2-.7 3.6.6 1.7 1.7 3.3 3 4.6 2.2 2.2 4.6 2.6 5.5 2.5.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
-      <path d="M20.5 3.5C18.3 1.2 15.3 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12 0-3.3-1.2-6.3-3.5-8.3zM12 22c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-3.7 1 1-3.7-.2-.4C2.5 15.7 2 13.9 2 12 2 6.5 6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/>
-    </svg>
-    <span className="wa-bubble-label">¿Hablamos?</span>
-  </a>
-);
+export const WhatsAppBubble = () => {
+  const [showTop, setShowTop] = useState(false);
+  const [nearFooter, setNearFooter] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShowTop(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  // En el footer la burbuja tapa enlaces (ej. política de privacidad): se oculta.
+  useEffect(() => {
+    const footer = document.querySelector('footer');
+    if (!footer || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(([e]) => setNearFooter(e.isIntersecting));
+    io.observe(footer);
+    return () => io.disconnect();
+  }, []);
+  return (
+    <>
+      <button
+        type="button"
+        className={`back-to-top${showTop ? ' visible' : ''}`}
+        aria-label="Volver arriba"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+      </button>
+      <a
+        href="https://wa.me/595973989068?text=Hola%20NEURA%20%F0%9F%91%8B%20%C2%BFHablamos%3F"
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`wa-bubble${nearFooter ? ' is-hidden' : ''}`}
+        aria-label="Contactar por WhatsApp"
+        aria-hidden={nearFooter || undefined}
+        tabIndex={nearFooter ? -1 : undefined}
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+          <path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1l-.9 1.1c-.2.2-.3.2-.6.1-1.7-.8-2.8-1.5-3.9-3.4-.3-.5.3-.5.8-1.5.1-.2 0-.3 0-.5-.1-.1-.7-1.5-.9-2.1-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-1 .9-1.2 2-.7 3.6.6 1.7 1.7 3.3 3 4.6 2.2 2.2 4.6 2.6 5.5 2.5.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
+          <path d="M20.5 3.5C18.3 1.2 15.3 0 12 0 5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12 0-3.3-1.2-6.3-3.5-8.3zM12 22c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-3.7 1 1-3.7-.2-.4C2.5 15.7 2 13.9 2 12 2 6.5 6.5 2 12 2s10 4.5 10 10-4.5 10-10 10z"/>
+        </svg>
+        <span className="wa-bubble-label">¿Hablamos?</span>
+      </a>
+    </>
+  );
+};
 
 export default App;

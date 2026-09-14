@@ -1,10 +1,10 @@
 // Hero — animated ecosystem dashboard
 import React from 'react';
-import logoUrl from './neura-logo.svg?url';
-import showcase1 from './assets/uploads/1.svg?url';
-import showcase2 from './assets/uploads/2.svg?url';
-import showcase3 from './assets/uploads/3.svg?url';
-import showcase4 from './assets/uploads/4.svg?url';
+import logoUrl from './neura-logo.jpeg?url';
+import showcase1 from './uploads/site1.png?url';
+import showcase2 from './uploads/site2.png?url';
+import showcase3 from './uploads/site3.png?url';
+import showcase4 from './uploads/site4.png?url';
 
 const webShowcaseSlides = [showcase1, showcase2, showcase3, showcase4];
 
@@ -79,14 +79,14 @@ const Hero = () => {
         <div className="hero-copy">
           <div className="eyebrow reveal" data-delay="0">
             <span className="dot"></span>
-            Ecosistemas digitales · Asunción, Paraguay
+            Ecosistemas digitales · Fernando de la Mora, Paraguay
           </div>
           <h1 className="reveal" data-delay="1">
             Creamos <span className="hl">soluciones digitales</span> para que tu negocio venda más, trabaje mejor y <span className="hl-2">crezca con orden</span>.
           </h1>
           <p className="hero-sub reveal" data-delay="2">
-            Creamos sitios web, tiendas online, sistemas internos, automatizaciones, marketing
-            digital y soluciones contables para que tu empresa <strong>venda mejor</strong>,
+            Creamos sitios web, tiendas online, sistemas internos
+            y soluciones contables para que tu empresa <strong>venda mejor</strong>,
             <strong> trabaje con más orden</strong> y tome decisiones con datos reales.
           </p>
 
@@ -108,22 +108,6 @@ const Hero = () => {
             <a href="#servicios" className="btn btn-ghost">Ver soluciones</a>
           </div>
 
-          <div className="hero-stats reveal" data-delay="5">
-            <div className="stat">
-              <div className="stat-num">+50</div>
-              <div className="stat-label">empresas con orden digital</div>
-            </div>
-            <div className="stat-sep" />
-            <div className="stat">
-              <div className="stat-num">6</div>
-              <div className="stat-label">áreas integradas</div>
-            </div>
-            <div className="stat-sep" />
-            <div className="stat">
-              <div className="stat-num">24/7</div>
-              <div className="stat-label">automatización</div>
-            </div>
-          </div>
         </div>
 
         {/* ECOSYSTEM MOCKUP */}
@@ -212,7 +196,7 @@ const Hero = () => {
               <div className="m-web-showcase">
                 {[0,1,2,3].map(i => (
                   <div key={i} className={`m-web-slide m-web-slide-${i}`}>
-                    <img className="m-web-img" src={webShowcaseSlides[i]} alt="" />
+                    <img className="m-web-img" src={webShowcaseSlides[i]} alt="" loading={i === 0 ? "eager" : "lazy"} decoding="async" />
                   </div>
                 ))}
                 <div className="m-web-progress"><span/></div>

@@ -136,6 +136,13 @@
 
 /* DIFFERENTIAL */
 .diff-section { background: var(--ice); }
+.diff-section.dark .diff-quote {
+  background: rgba(255,255,255,0.04);
+  border-color: rgba(255,255,255,0.08);
+  color: #E7EEF9;
+}
+.diff-section.dark .diff-quote p { color: #E7EEF9; }
+.diff-section.dark .diff-quote:hover { border-color: var(--accent-green); }
 .diff-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; }
 .diff-quotes { display: flex; flex-direction: column; gap: 16px; }
 .diff-quote {
@@ -167,11 +174,30 @@
 
 /* SERVICES */
 .services-section { background: white; }
-.services-tabs {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 8px;
+.services-tabs-wrap {
+  position: relative;
+  padding: 14px 0;
   margin-bottom: 48px;
+}
+.services-tabs-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: #0A282E;
+  z-index: 0;
+}
+.services-tabs {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 0 auto;
+  max-width: 560px;
   background: var(--ice);
   padding: 8px;
   border-radius: 18px;
@@ -193,6 +219,53 @@
   box-shadow: 0 8px 24px -8px rgba(7,16,31,0.4);
 }
 .services-tab.active .services-tab-icon { color: var(--accent-green); }
+
+.service-plans {
+  margin-top: 28px;
+  display: grid;
+  gap: 10px;
+}
+.service-plan {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: white;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.service-plan:hover { border-color: var(--accent-green); transform: translateX(2px); }
+.service-plan-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.service-plan-name { font-weight: 600; font-size: 14px; color: var(--text); }
+.service-plan-price { font-weight: 700; font-size: 14px; color: var(--accent-green); white-space: nowrap; }
+.service-plan-note { font-size: 12px; color: var(--text-mute); }
+
+.sv2-sys-img-wrap {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #0b1220;
+}
+.sv2-sys-img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
 .services-tab-icon { color: currentColor; }
 
 .services-detail {
@@ -439,7 +512,7 @@
 .sv2-warn { font-size: 10px; font-weight: 700; color: #b45309; }
 
 @media (max-width: 900px) {
-  .services-tabs { grid-template-columns: repeat(3, 1fr); }
+  .services-tabs { grid-template-columns: repeat(2, 1fr); max-width: 480px; }
   .services-detail { grid-template-columns: 1fr; gap: 40px; }
   .features-list { grid-template-columns: 1fr; }
 }
@@ -512,7 +585,16 @@
 @media (max-width: 500px) { .cases-grid { grid-template-columns: 1fr; } }
 
 /* CTA */
-.cta-section { overflow: hidden; }
+.cta-section { overflow: hidden; background: var(--ice) !important; color: var(--text); padding-top: 40px; padding-bottom: 60px; }
+.cta-section .cta-glow { opacity: 0.5; }
+.cta-section .cursor-glow { display: none; }
+.cta-card {
+  background: linear-gradient(180deg, #0b1726, #07101f) !important;
+  border: 1px solid rgba(34,211,160,0.18) !important;
+  box-shadow: 0 30px 80px -30px rgba(7,16,31,0.35);
+}
+.cta-card, .cta-card h2, .cta-card p, .cta-card .cta-meta { color: var(--text-on-dark); }
+.cta-card p { color: var(--text-on-dark-soft); }
 .cta-glow {
   position: absolute;
   top: 50%; left: 50%; transform: translate(-50%,-50%);
@@ -599,3 +681,15 @@
 @media (max-width: 500px) {
   .footer-grid { grid-template-columns: 1fr; }
 }
+
+/* Método en claro (entre Zentra y Clientes, que son oscuras) */
+.method-section { background: linear-gradient(180deg, #fff 0%, var(--ice) 100%); }
+.method-section .method-line { background: linear-gradient(90deg, transparent, rgba(7,16,31,0.12) 10%, rgba(7,16,31,0.12) 90%, transparent); }
+.method-section .method-step-num {
+  background: #fff;
+  border-color: var(--line);
+  color: #0c8a64;
+  box-shadow: 0 10px 24px -16px rgba(7,16,31,0.35);
+}
+.method-section .method-step:hover .method-step-num { background: var(--accent-green); color: var(--ink); border-color: var(--accent-green); }
+.method-section .method-step p { color: var(--text-soft); }

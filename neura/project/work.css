@@ -1,0 +1,6 @@
+/* NUESTRO TRABAJO */
+.work-section { position: relative; background: #fff; }
+.work-head { margin-bottom: 48px; }
+.work-head h2 { font-size: clamp(30px, 3vw, 42px); line-height: 1.15; }
+.work-accent { color: #0c8a64; }
+.work-section .item-wrapper > .item-img { box-shadow: 0 16px 36px -18px rgba(7,16,31,0.28); border: 1px solid rgba(7,16,31,0.08); }

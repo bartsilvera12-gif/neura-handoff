@@ -1,0 +1,205 @@
+/* SERVICIOS (services.jsx) — todo va dentro de .svc: con dos clases gana al reset
+   móvil (.m-app * { margin:0; padding:0 }) sin depender del orden de los CSS. */
+.svc { background: #fff; }
+
+.svc .svc-head { max-width: 720px; margin-bottom: 48px; }
+.svc .svc-head h2 { margin-top: 18px; font-size: clamp(30px, 3.2vw, 44px); line-height: 1.12; }
+.svc .svc-head p { margin-top: 16px; font-size: 18px; color: var(--text-soft); }
+.svc .svc-accent { color: #0c8a64; }
+
+/* Grilla: web a todo el ancho; Zentra y contable debajo, lado a lado */
+.svc .svc-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+.svc .svc-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 28px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+.svc .svc-card--web {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: center;
+  gap: 48px;
+  padding: 56px;
+  color: #F4F7FB;
+  background:
+    radial-gradient(ellipse 55% 80% at 85% 50%, rgba(34,211,160,0.16), transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 100%, rgba(47,123,255,0.14), transparent 70%),
+    #0B1220;
+}
+.svc .svc-card--zentra {
+  grid-column: span 7;
+  background: linear-gradient(180deg, #F4F7FB, #EAF0F8);
+  border: 1px solid var(--line);
+}
+.svc .svc-card--acc {
+  grid-column: span 5;
+  background: #fff;
+  border: 1px solid var(--line);
+  box-shadow: 0 24px 50px -36px rgba(7,16,31,0.35);
+}
+
+/* Texto de cada tarjeta */
+.svc .svc-copy { display: flex; flex-direction: column; align-items: flex-start; }
+.svc .svc-tag {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font: 600 12px/1.2 var(--font-body);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0c8a64;
+  background: rgba(34,211,160,0.12);
+}
+.svc .svc-card--web .svc-tag { color: #6EE7C3; background: rgba(34,211,160,0.14); }
+.svc .svc-tag--blue { color: #1e54bf; background: rgba(47,123,255,0.1); }
+.svc .svc-copy h3 {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.4vw, 34px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.svc .svc-copy p { margin-top: 12px; font-size: 16px; line-height: 1.6; color: var(--text-soft); max-width: 46ch; }
+.svc .svc-card--web .svc-copy h3 { color: #fff; font-size: clamp(28px, 3vw, 42px); }
+.svc .svc-card--web .svc-copy p { color: rgba(244,247,251,0.72); font-size: 17px; }
+
+.svc .svc-features { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.svc .svc-features li {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 7px 14px 7px 8px;
+  border-radius: 999px;
+  font-size: 14px; font-weight: 500;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--line);
+}
+.svc .svc-card--web .svc-features li { color: #F4F7FB; background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.12); }
+.svc .svc-check {
+  display: inline-grid; place-items: center;
+  width: 20px; height: 20px; border-radius: 50%;
+  color: #07101F; background: var(--accent-green);
+}
+
+/* Botón */
+.svc .svc-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  margin-top: 28px;
+  padding: 14px 16px 14px 24px;
+  border-radius: 999px;
+  font: 600 15px/1 var(--font-body);
+  text-decoration: none;
+  color: #fff;
+  background: var(--ink);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.svc .svc-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 28px -14px rgba(7,16,31,0.6); }
+.svc .svc-btn:focus-visible { outline: 2px solid var(--accent-green); outline-offset: 3px; }
+.svc .svc-btn-arrow {
+  display: inline-grid; place-items: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  color: #07101F; background: var(--accent-green);
+}
+.svc .svc-card--web .svc-btn { color: #07101F; background: var(--accent-green); }
+.svc .svc-card--web .svc-btn-arrow { color: #fff; background: #07101F; }
+.svc .svc-card--acc .svc-btn { margin-top: auto; align-self: flex-start; }
+
+/* Ventanas de navegador */
+.svc .svc-browser {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 30px 60px -28px rgba(0,0,0,0.55), 0 0 0 1px rgba(7,16,31,0.06);
+}
+.svc .svc-bar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 9px 14px;
+  background: #F6F8FC;
+  border-bottom: 1px solid var(--line);
+}
+.svc .svc-dots { display: flex; gap: 5px; flex: none; }
+.svc .svc-dots i { display: block; width: 9px; height: 9px; border-radius: 50%; }
+.svc .svc-dots i:nth-child(1) { background: #FF5F57; }
+.svc .svc-dots i:nth-child(2) { background: #FEBC2E; }
+.svc .svc-dots i:nth-child(3) { background: #28C840; }
+.svc .svc-url {
+  flex: 1; min-width: 0;
+  padding: 3px 12px;
+  font-size: 11.5px; color: var(--text-soft); text-align: center;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  background: #fff; border: 1px solid var(--line); border-radius: 6px;
+}
+.svc .svc-media { display: block; width: 100%; height: auto; object-fit: cover; background: #0B1220; }
+
+/* Web: navegador + teléfono encima */
+.svc .svc-web-visual { position: relative; padding: 0 0 36px 44px; }
+.svc .svc-phone {
+  position: absolute; left: 0; bottom: 0;
+  width: 24%;
+  padding: 5px;
+  border-radius: 22px;
+  background: #0B1424;
+  box-shadow: 0 24px 40px -18px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.08);
+}
+.svc .svc-phone img { display: block; width: 100%; height: auto; aspect-ratio: 900 / 1890; object-fit: cover; object-position: top; border-radius: 17px; }
+
+/* Zentra: el panel entero dentro de la tarjeta, abajo */
+.svc .svc-browser--zentra { margin-top: auto; box-shadow: 0 24px 48px -28px rgba(7,16,31,0.45), 0 0 0 1px var(--line); }
+
+/* Contable: planes con precio */
+.svc .svc-plans { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.svc .svc-plan {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--ice);
+  border: 1px solid transparent;
+  transition: border-color .2s ease, background .2s ease;
+}
+.svc .svc-plan:hover { border-color: rgba(34,211,160,0.5); background: #fff; }
+.svc .svc-plan-name { display: block; font-size: 15px; font-weight: 600; color: var(--text); }
+.svc .svc-plan-note { display: block; margin-top: 3px; font-size: 12.5px; color: var(--text-soft); }
+.svc .svc-plan-price {
+  flex: none; text-align: right;
+  font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--text);
+  white-space: nowrap;
+}
+.svc .svc-plan-price small {
+  display: block;
+  font: 500 11px/1.2 var(--font-body);
+  color: var(--text-soft);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Pantallas medianas: una columna */
+@media (max-width: 1080px) {
+  .svc .svc-card--web { grid-template-columns: 1fr; padding: 44px; }
+  .svc .svc-card--zentra, .svc .svc-card--acc { grid-column: 1 / -1; }
+}
+
+/* Celular (mobile.jsx) */
+.m-app .svc .svc-head { margin-bottom: 28px; }
+.m-app .svc .svc-head h2 { margin-top: 12px; }
+.m-app .svc .svc-head p { margin-top: 10px; font-size: 15px; }
+.m-app .svc .svc-grid { gap: 14px; }
+.m-app .svc .svc-card { padding: 26px 22px; border-radius: 22px; gap: 22px; }
+.m-app .svc .svc-card--web { padding: 28px 22px; gap: 28px; }
+.m-app .svc .svc-copy p { font-size: 15px; }
+.m-app .svc .svc-features { margin-top: 18px; gap: 6px; }
+.m-app .svc .svc-features li { font-size: 13px; padding: 6px 12px 6px 6px; }
+.m-app .svc .svc-btn { margin-top: 22px; }
+.m-app .svc .svc-card--acc .svc-btn { margin-top: 0; }
+.m-app .svc .svc-web-visual { padding: 0 0 28px 30px; }
+.m-app .svc .svc-phone { width: 28%; padding: 4px; border-radius: 16px; }
+.m-app .svc .svc-phone img { border-radius: 12px; }
+.m-app .svc .svc-plan { padding: 12px 14px; }
+.m-app .svc .svc-plan-name { font-size: 14px; }
+.m-app .svc .svc-plan-price { font-size: 14px; }
+.m-app .svc .svc-media { height: auto; }

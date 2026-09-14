@@ -1,0 +1,207 @@
+/* HERO NEURA — portal tipográfico (glyph-portal.jsx) */
+/* styles.css da padding a todo <section> (y [data-density] section): acá descuadra la
+   palabra y el cálculo de scroll del portal. */
+section.glyph-hero.glyph-hero { padding: 0; }
+.glyph-hero--loading { height: 100vh; height: 100svh; background: var(--ice); }
+
+/* Lo que se ve a través de las letras, y lo que llena la pantalla al entrar */
+.glyph-hero .gh-field {
+  position: absolute; inset: 0;
+  transform: scale(var(--gp-field-scale, 1));
+  /* Azul marino del logo (#213046): así se ven las letras y el fondo al entrar */
+  background: #213046;
+}
+
+/* ---- Pantalla inicial ---- */
+.glyph-hero .gh-eyebrow {
+  position: absolute; left: 24px; right: 24px;
+  /* Encima de los puntos del logo, que suben ~20% del alto de la palabra sobre ella */
+  bottom: calc(100% - var(--gp-word-top, 35%) + (var(--gp-word-bottom, 50%) - var(--gp-word-top, 35%)) * 0.21 + 14px);
+  margin: 0;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-mute);
+}
+.glyph-hero .gh-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-green);
+  box-shadow: 0 0 0 3px rgba(34,211,160,0.18);
+}
+.glyph-hero .gh-support {
+  position: absolute; left: 24px; right: 24px;
+  top: calc(var(--gp-word-bottom, 50%) + 28px);
+  margin: 0;
+  text-align: center;
+  font-size: clamp(16px, 1.4vw, 19px); line-height: 1.5;
+  color: var(--text);
+}
+.glyph-hero .gh-scroll {
+  position: absolute; left: 24px; right: 24px; bottom: 6%;
+  text-align: center;
+  font-size: 12px; letter-spacing: 0.02em;
+  color: var(--text-mute);
+}
+
+/* Botón "entrar" del componente, con el estilo de los botones del sitio */
+.glyph-hero [data-gp-caption] {
+  inset: calc(var(--gp-word-bottom, 50%) + 88px) 24px auto;
+  justify-content: center;
+}
+.glyph-hero [data-gp-hint] { display: none; }
+.glyph-hero [data-gp-enter] {
+  min-height: 48px; padding: 0 22px; gap: 12px;
+  border-radius: 999px;
+  background: var(--ink); color: #fff;
+  font-size: 15px; font-weight: 500;
+  box-shadow: 0 8px 24px rgba(7,16,31,0.18);
+  transition: transform 0.25s cubic-bezier(.2,.8,.2,1), box-shadow 0.25s, background 0.25s;
+}
+.glyph-hero [data-gp-enter]:hover {
+  transform: translateY(-2px);
+  background: var(--ink-2);
+  box-shadow: 0 14px 32px rgba(7,16,31,0.28);
+}
+/* Selector de letra en pantallas táctiles: abajo, lejos del texto */
+.glyph-hero [data-gp-touch-picker] { top: auto; bottom: 13%; }
+.glyph-hero [data-gp-select] { border-color: var(--line); border-radius: 999px; font-family: var(--font-body); }
+
+/* ---- Contenido al entrar ---- */
+/* Con movimiento va en el overlay, sobre el fondo; sin movimiento, en el bloque de abajo.
+   Arriba deja lugar al header fijo (77px). */
+.glyph-hero [data-gp-overlay],
+.glyph-hero [data-gp-content] { padding: clamp(100px, 14vh, 124px) clamp(20px, 5vw, 80px) clamp(40px, 7vh, 72px); }
+/* Atenúa el brillo para que el texto blanco se lea; entra junto con el contenido. */
+.glyph-hero [data-gp-overlay] {
+  background: linear-gradient(180deg, rgba(7,16,31,0.62) 0%, rgba(7,16,31,0.4) 55%, rgba(7,16,31,0.6) 100%);
+}
+.glyph-hero .gh-content {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  display: flex; flex-direction: column; gap: clamp(24px, 4.5vh, 48px);
+}
+
+/* Encabezado: titular a la izquierda, texto y botones a la derecha */
+.glyph-hero .gh-head {
+  display: grid; grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 80px);
+  align-items: end;
+}
+.glyph-hero .gh-kicker {
+  display: flex; align-items: center; gap: 10px;
+  margin: 0 0 18px;
+  font-size: 12px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase;
+  color: rgba(244,247,251,0.6);
+}
+.glyph-hero .gh-content h2 {
+  margin: 0;
+  font-family: var(--font-display); font-weight: 600;
+  font-size: clamp(28px, 2.7vw, 44px); line-height: 1.1; letter-spacing: -0.025em;
+  color: #F4F7FB;
+  text-wrap: balance;
+}
+.glyph-hero .gh-hl {
+  background: linear-gradient(120deg, #22D3A0, #4FAEB2);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+
+/* Botones */
+.glyph-hero .gh-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.glyph-hero .gh-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 22px; border-radius: 999px;
+  font-size: 15px; font-weight: 500; text-decoration: none;
+  transition: transform 0.25s cubic-bezier(.2,.8,.2,1), box-shadow 0.25s, background 0.25s, border-color 0.25s;
+}
+.glyph-hero .gh-btn--primary { background: #22D3A0; color: #07101F; box-shadow: 0 8px 24px rgba(34,211,160,0.25); }
+.glyph-hero .gh-btn--primary:hover { transform: translateY(-2px); box-shadow: 0 14px 32px rgba(34,211,160,0.35); }
+.glyph-hero .gh-btn-arrow {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: #07101F; color: #22D3A0;
+}
+.glyph-hero .gh-btn--ghost { color: #F4F7FB; border: 1px solid rgba(244,247,251,0.25); }
+.glyph-hero .gh-btn--ghost:hover { background: rgba(244,247,251,0.08); border-color: rgba(244,247,251,0.45); }
+
+/* Tarjetas de servicio: vidrio con el color de su zona de la palabra (--c) */
+.glyph-hero .gh-cards {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 1.6vw, 24px);
+}
+.glyph-hero .gh-card {
+  position: relative;
+  display: flex; flex-direction: column;
+  padding: 22px 24px 20px;
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(244,247,251,0.07), rgba(244,247,251,0.03));
+  border: 1px solid rgba(244,247,251,0.1);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(.2,.8,.2,1), border-color 0.3s, box-shadow 0.3s;
+}
+/* Línea de color arriba */
+.glyph-hero .gh-card::before {
+  content: '';
+  position: absolute; left: 24px; right: 24px; top: 0; height: 2px;
+  background: linear-gradient(90deg, var(--c), transparent);
+  opacity: 0.8;
+}
+/* Brillo del color en la esquina, se enciende al pasar el mouse */
+.glyph-hero .gh-card::after {
+  content: '';
+  position: absolute; width: 220px; height: 220px; right: -80px; top: -100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--c), transparent 70%);
+  opacity: 0.12;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.glyph-hero .gh-card:hover {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--c) 45%, transparent);
+  box-shadow: 0 20px 40px -20px color-mix(in srgb, var(--c) 50%, transparent);
+}
+.glyph-hero .gh-card:hover::after { opacity: 0.28; }
+
+.glyph-hero .gh-card-icon {
+  margin-bottom: 16px;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; border-radius: 12px;
+  color: var(--c);
+  background: color-mix(in srgb, var(--c) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c) 30%, transparent);
+}
+.glyph-hero .gh-card h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-display); font-size: 19px; font-weight: 600; letter-spacing: -0.01em;
+  color: #F4F7FB;
+}
+.glyph-hero .gh-card p { margin: 0 0 14px; font-size: 14.5px; line-height: 1.6; color: rgba(244,247,251,0.7); }
+.glyph-hero .gh-card ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.glyph-hero .gh-card li { display: flex; align-items: center; gap: 10px; font-size: 14px; color: rgba(244,247,251,0.86); }
+.glyph-hero .gh-check {
+  display: inline-flex; align-items: center; justify-content: center; flex: none;
+  width: 18px; height: 18px; border-radius: 50%;
+  color: var(--c);
+  background: color-mix(in srgb, var(--c) 16%, transparent);
+}
+
+@media (max-width: 1100px) {
+  .glyph-hero .gh-head { grid-template-columns: 1fr; align-items: start; }
+}
+@media (max-width: 900px) {
+  .glyph-hero .gh-cards { grid-template-columns: 1fr; }
+}
+
+/* Puntos turquesa del logo (la "molécula" de la N), alineados con la palabra */
+.glyph-hero .gh-dots {
+  position: absolute;
+  top: var(--gp-word-top, 35%);
+  left: 50%;
+  height: calc(var(--gp-word-bottom, 50%) - var(--gp-word-top, 35%));
+  transform: translateX(-50%);
+  overflow: visible;
+  fill: #4AA6A6;
+  pointer-events: none;
+}

@@ -1,0 +1,16 @@
+/* CIERRE — lema con MaskedHeading */
+/* section.x gana al padding global de <section>; en móvil, al reset .m-app * */
+section.brand-closing {
+  padding: clamp(48px, 7vw, 110px) 0;
+  overflow: hidden;
+  /* Oscuro, pero distinto del footer (--ink #07101F): el navy más claro de la paleta */
+  background:
+    radial-gradient(ellipse 55% 70% at 50% 50%, rgba(79,174,178,0.14), transparent 70%),
+    var(--ink-3, #15263F);
+}
+.brand-closing__inner {
+  width: min(100% - 40px, 1180px);
+  margin: 0 auto;
+}
+/* El reset móvil (.m-app img { height: auto }) deja la imagen sin cubrir las letras */
+.m-app .brand-closing .masked-heading__source { height: 100%; }

@@ -1,0 +1,88 @@
+/* ZENTRA ERP (zentra-section.jsx) — dentro de .zs con dos clases: gana al reset móvil */
+.zs {
+  position: relative;
+  overflow: hidden;
+  color: #F4F7FB;
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 0%, rgba(88,177,181,0.28), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(34,211,160,0.12), transparent 70%),
+    linear-gradient(180deg, #0A2327 0%, #07121C 55%, #07101F 100%);
+}
+
+.zs .zs-head { max-width: 780px; margin: 0 auto 48px; text-align: center; }
+.zs .zs-logo { display: block; width: 132px; height: auto; margin: 0 auto 26px; color: #fff; }
+.zs .zs-head h2 {
+  font-size: clamp(30px, 3.6vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+.zs .zs-accent { color: #7FD6C9; }
+.zs .zs-head p {
+  max-width: 620px;
+  margin: 18px auto 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(244,247,251,0.72);
+}
+
+/* Video */
+.zs .zs-player {
+  position: relative;
+  max-width: 1120px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #000;
+  box-shadow:
+    0 50px 100px -40px rgba(0,0,0,0.8),
+    0 0 0 1px rgba(127,214,201,0.18),
+    0 0 80px -20px rgba(88,177,181,0.35);
+}
+.zs .zs-video { display: block; width: 100%; height: auto; aspect-ratio: 1920 / 896; background: #07101F; }
+
+/* Módulos + botón */
+.zs .zs-foot {
+  max-width: 1120px;
+  margin: 32px auto 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  flex-wrap: wrap;
+}
+.zs .zs-modules { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.zs .zs-modules li {
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 13.5px; font-weight: 500;
+  color: #DDF3EF;
+  background: rgba(127,214,201,0.08);
+  border: 1px solid rgba(127,214,201,0.2);
+}
+.zs .zs-modules .zs-more { color: #7FD6C9; background: transparent; border-style: dashed; }
+.zs .zs-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 14px 16px 14px 24px;
+  border-radius: 999px;
+  font: 600 15px/1 var(--font-body);
+  text-decoration: none;
+  color: #07101F;
+  background: #7FD6C9;
+  transition: transform .25s ease, box-shadow .25s ease;
+  white-space: nowrap;
+}
+.zs .zs-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(127,214,201,0.55); }
+.zs .zs-btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.zs .zs-btn-arrow {
+  display: inline-grid; place-items: center;
+  width: 28px; height: 28px; border-radius: 50%;
+  color: #fff; background: #07101F;
+}
+
+/* Celular (mobile.jsx) */
+.m-app .zs .zs-head { margin: 0 auto 28px; }
+.m-app .zs .zs-logo { width: 96px; margin: 0 auto 18px; }
+.m-app .zs .zs-head p { margin: 12px auto 0; font-size: 15px; }
+.m-app .zs .zs-player { border-radius: 14px; }
+.m-app .zs .zs-video { height: auto; }
+.m-app .zs .zs-foot { margin: 22px auto 0; gap: 18px; }
+.m-app .zs .zs-modules li { padding: 6px 11px; font-size: 12px; }
+.m-app .zs .zs-btn { width: 100%; justify-content: space-between; padding: 14px 14px 14px 20px; }

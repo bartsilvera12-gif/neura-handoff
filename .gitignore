@@ -4,3 +4,19 @@ neura/project/node_modules/
 *.log
 .env
 .env.*
+
+# Copias y paquetes locales: pesados y el sitio no los usa
+neura/project/neura-hostinger/
+neura/project/*.zip
+neura/project/uploads/originales/
+neura/project/uploads/paginas-originales/
+neura/project/uploads/usuarios.mp4
+
+# Grabación vieja de Zentra (muestra datos personales); la reemplazó uploads/zentra/
+neura/project/uploads/zentra.mp4
+neura/project/uploads/zentra-poster.webp
+
+# Configuración local de herramientas
+.claude/
+neura/project/.claude/
+desktop.ini
