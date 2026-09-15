@@ -8,7 +8,6 @@ import './zentra-section.css';
 import demoVideo from './uploads/zentra/zentra-demo.mp4?url';
 import demoPoster from './uploads/zentra/zentra-demo-poster.webp?url';
 
-const WA_TEXT = 'Hola NEURA 👋 Vi el video de Zentra ERP y quiero una demo para mi negocio.';
 const MODULES = [
   'Ventas y caja', 'Clientes', 'CRM y embudo de ventas', 'Conversaciones', 'Sorteos',
   'Compras', 'Cobranzas', 'Inventario', 'Comandas y pedidos', 'Producción',
@@ -62,17 +61,6 @@ const ZentraSection = ({ mobile = false }) => (
           {MODULES.map((m) => <li key={m}>{m}</li>)}
           <li className="zs-more">y mucho más</li>
         </ul>
-        <a
-          className="zs-btn"
-          href={`https://wa.me/595973989068?text=${encodeURIComponent(WA_TEXT)}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Quiero una demo para mi negocio
-          <span className="zs-btn-arrow" aria-hidden="true">
-            <svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6h7M6 3l3 3-3 3" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </span>
-        </a>
       </div>
     </div>
   </section>

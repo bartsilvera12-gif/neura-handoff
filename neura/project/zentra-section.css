@@ -41,7 +41,7 @@
 }
 .zs .zs-video { display: block; width: 100%; height: auto; aspect-ratio: 1764 / 824; background: #07101F; }
 
-/* Módulos + botón */
+/* Módulos */
 .zs .zs-foot {
   max-width: 1120px;
   margin: 32px auto 0;
@@ -58,24 +58,6 @@
   border: 1px solid rgba(127,214,201,0.2);
 }
 .zs .zs-modules .zs-more { color: #7FD6C9; background: transparent; border-style: dashed; }
-.zs .zs-btn {
-  display: inline-flex; align-items: center; gap: 12px;
-  padding: 14px 16px 14px 24px;
-  border-radius: 999px;
-  font: 600 15px/1 var(--font-body);
-  text-decoration: none;
-  color: #07101F;
-  background: #7FD6C9;
-  transition: transform .25s ease, box-shadow .25s ease;
-  white-space: nowrap;
-}
-.zs .zs-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -12px rgba(127,214,201,0.55); }
-.zs .zs-btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
-.zs .zs-btn-arrow {
-  display: inline-grid; place-items: center;
-  width: 28px; height: 28px; border-radius: 50%;
-  color: #fff; background: #07101F;
-}
 
 /* Celular (mobile.jsx) */
 .m-app .zs .zs-head { margin: 0 auto 28px; }
@@ -85,4 +67,3 @@
 .m-app .zs .zs-video { height: auto; }
 .m-app .zs .zs-foot { margin: 22px auto 0; gap: 18px; }
 .m-app .zs .zs-modules li { padding: 6px 11px; font-size: 12px; }
-.m-app .zs .zs-btn { width: 100%; justify-content: space-between; padding: 14px 14px 14px 20px; }
